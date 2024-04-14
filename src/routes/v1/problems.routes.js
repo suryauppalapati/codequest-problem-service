@@ -1,14 +1,14 @@
 const express = require("express");
-const { ProblemController } = require("../../controllers");
+const { problemController } = require("../../controllers");
 
 const problemRouter = express.Router();
 
-problemRouter.get("/ping", ProblemController.problemPingController);
+problemRouter.get("/ping", problemController.problemPingController);
 
-problemRouter.get("/:id", ProblemController.getProblem);
-problemRouter.get("/", ProblemController.getProblems);
-problemRouter.post("/add", ProblemController.addProblem);
-problemRouter.put("/:id", ProblemController.updateProblem);
-problemRouter.delete("/:id", ProblemController.deleteProblem);
+problemRouter.get("/:id", problemController.getProblem);
+problemRouter.get("/", problemController.getProblems);
+problemRouter.post("/add", problemController.addProblem);
+problemRouter.put("/:id", problemController.updateProblem);
+problemRouter.delete("/:id", problemController.deleteProblem);
 
 module.exports = problemRouter;
