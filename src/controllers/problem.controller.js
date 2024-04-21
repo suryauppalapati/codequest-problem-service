@@ -6,7 +6,7 @@ function problemPingController(req, res) {
   return res.send("Problem controller is up and running!");
 }
 
-function addProblem(req, res) {
+function addProblem(req, res, next) {
   try {
     throw new NotImplementedError("Add problem");
   } catch (error) {
@@ -14,7 +14,7 @@ function addProblem(req, res) {
   }
 }
 
-function getProblem(req, res) {
+function getProblem(req, res, next) {
   try {
     throw new NotImplementedError("Get problem");
   } catch (error) {
@@ -30,7 +30,7 @@ function getProblems(req, res, next) {
   }
 }
 
-function updateProblem(req, res) {
+function updateProblem(req, res, next) {
   try {
     throw new NotImplementedError("Update problem");
   } catch (error) {
@@ -38,7 +38,7 @@ function updateProblem(req, res) {
   }
 }
 
-function deleteProblem(req, res) {
+function deleteProblem(req, res, next) {
   try {
     throw new NotImplementedError("Delete problem");
   } catch (error) {
