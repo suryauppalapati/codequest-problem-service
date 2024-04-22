@@ -8,15 +8,11 @@ class ProblemService {
   async createProblem(problemData) {
     try {
       problemData.description = sanitizeMarkdown(problemData.description);
-      const newProblem = await this.problemRepository.createProblem({
-        title: problemData.title,
-        description: problemData.description,
-        testcases: problemData.testcases ? testcases : [],
-      });
+      const newProblem = await this.problemRepository.createProblem(problemData);
 
       return newProblem;
     } catch (error) {
-      console.log("Error while creating a new problem");
+      console.log("Error while creating a new problem", error);
       throw error;
     }
   }
