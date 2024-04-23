@@ -1,5 +1,5 @@
 const { StatusCodes } = require("http-status-codes");
-const BaseError = require("../errors");
+const BaseError = require("../errors/BaseError");
 
 //Custom middleware to handle errors
 function handleError(err, req, res, next) {
@@ -7,15 +7,16 @@ function handleError(err, req, res, next) {
     return res.status(err.statusCode).json({
       success: false,
       statusCode: err.statusCode,
-      message: err.message,
-      errors: err.details,
+      error: err.message,
+      details: err.details,
     });
   } else {
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
       success: false,
       statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
       message: "Internal server error",
-      errors: err,
+      details: {},
+      error: err,
     });
   }
 }

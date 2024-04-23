@@ -1,10 +1,6 @@
-class BaseError extends Error {
-  constructor(name, message, details, statusCode) {
-    super(message);
-    this.statusCode = statusCode;
-    this.details = details;
-    this.name = name;
-  }
-}
-
-module.exports = BaseError;
+module.exports = {
+  BadRequestError: require("./badRequest.error"),
+  NotImplementedError: require("./notImplemented.error"),
+  NotFoundError: require("./notFound.error"),
+  InternalServerError: require("./internalServer.error"),
+};
