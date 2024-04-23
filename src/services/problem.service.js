@@ -30,7 +30,7 @@ class ProblemService {
 
   async deleteProblem(problemId) {
     const deleteResponse = await this.problemRepository.deleteProblem(problemId);
-    if (!deleteResponse.deletedCount) throw new NotFoundError("Problem", problemId);
+    if (!deleteResponse) throw new NotFoundError("Problem", problemId);
     return deleteResponse;
   }
 }

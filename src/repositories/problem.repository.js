@@ -47,7 +47,7 @@ class ProblemRepository {
 
   async deleteProblem(problemId) {
     try {
-      const deleteResponse = await Problem.deleteOne({ _id: problemId });
+      const deleteResponse = await Problem.findByIdAndDelete(problemId);
       return deleteResponse;
     } catch (error) {
       console.log("Error while deleting problem with given id");
