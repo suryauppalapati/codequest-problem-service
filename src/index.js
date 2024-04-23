@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const { PORT } = require("./config/server.config");
 const handleError = require("./utils/errorHandler");
 const apiRouter = require("./routes");
+const connectToDB = require("./config/db.config");
 
 const app = express();
 
@@ -19,4 +20,7 @@ app.get("/ping", (req, res) => {
 //Custom middleware to handle errors
 app.use(handleError);
 
-app.listen(PORT, () => console.log(`Server started listenig at Port ${PORT}`));
+app.listen(PORT, async () => {
+  console.log(`Server started listenig at Port ${PORT}`);
+  await connectToDB(); //initiate database connection
+});

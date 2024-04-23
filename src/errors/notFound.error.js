@@ -1,9 +1,9 @@
-const BaseError = require("./index");
+const BaseError = require("./BaseError");
 const { StatusCodes } = require("http-status-codes");
 
 class NotFoundError extends BaseError {
-  constructor(message, errorDetails) {
-    super("Not Found", message, errorDetails, StatusCodes.NOT_FOUND);
+  constructor(resourceName, resourceValue) {
+    super("Not Found", "Resource not found", { resourceName, resourceValue }, StatusCodes.NOT_FOUND);
   }
 }
 
