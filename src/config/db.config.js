@@ -1,13 +1,13 @@
 const mongoose = require("mongoose");
 const { DB_URL } = require("./server.config");
+const logger = require("./logger.config");
 
 async function connectToDB() {
   try {
     await mongoose.connect(DB_URL);
-    console.log("Database connection successful");
+    logger.info("Database connection successful");
   } catch (error) {
-    console.log("Unable to connect database server");
-    console.log(error);
+    logger.info(`Unable to connect database server\n${error}`);
   }
 }
 

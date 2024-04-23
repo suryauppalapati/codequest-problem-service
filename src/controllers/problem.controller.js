@@ -1,7 +1,7 @@
 const { StatusCodes } = require("http-status-codes");
 const { ProblemService } = require("../services");
 const { ProblemRepository } = require("../repositories");
-const NotImplementedError = require("../errors/notImplemented.error");
+const logger = require("../config/logger.config");
 
 const problemRepository = new ProblemRepository();
 const problemService = new ProblemService(problemRepository);
@@ -20,7 +20,7 @@ async function addProblem(req, res, next) {
       data: newProblem,
     });
   } catch (error) {
-    console.log("Error while creating new problem", error);
+    logger.error(`An issue occured while creating new problem\n${error}`);
     next(error);
   }
 }
@@ -35,7 +35,7 @@ async function getProblem(req, res, next) {
       data: problem,
     });
   } catch (error) {
-    console.log("Error while fetching problem", error);
+    logger.error(`An issue occured while fetching problem\n${error}`);
     next(error);
   }
 }
@@ -50,7 +50,7 @@ async function getProblems(req, res, next) {
       data: problems,
     });
   } catch (error) {
-    console.log("Error while fetching problems", error);
+    logger.error(`An issue occured while retreving problems\n${error}`);
     next(error);
   }
 }
@@ -65,7 +65,7 @@ async function updateProblem(req, res, next) {
       data: updatedProblem,
     });
   } catch (error) {
-    console.log("Error while updating problem", error);
+    logger.error(`An issue occured while updating problem\n${error}`);
     next(error);
   }
 }
@@ -80,7 +80,7 @@ async function deleteProblem(req, res, next) {
       data: deleteResponse,
     });
   } catch (error) {
-    console.log("Error while deleting problem", error);
+    logger.error(`An issue occured while deleting problem with given id\n${error}`);
     next(error);
   }
 }
